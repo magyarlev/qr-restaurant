@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Item } from './schemas/item.schema';
 
-@Controller()
+@Controller('items')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getAllItems(): Promise<Item[]> {
+    return this.appService.getAllItems();
   }
 }
